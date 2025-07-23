@@ -5,8 +5,10 @@ from typing import Union
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from fastapi.responses import RedirectResponse
 
 import model
+
 
 # from dotenv import load_dotenv
 # import os
@@ -20,13 +22,9 @@ templates = Jinja2Templates(directory="templates")
 # DB_HOST=os.getenv('DB_HOST')
 # print(f"{DB_HOST}")
 
-@app.get("/", description="point d'API racine")
-def read_root():
-    """
-    Cette fonction retourne juste un JSON
-    :return: JSON
-    """
-    return {"Hello": "World"}
+@app.get("/")
+async def redirect_typer():
+    return RedirectResponse("/items/test")
 
 
 @app.get("/items/{id}")
