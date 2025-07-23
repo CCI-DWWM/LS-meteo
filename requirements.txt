@@ -1,0 +1,5 @@
+fastapi[standard]
+jinja2
+requests
+mysql-connector-python
+python-dotenv
